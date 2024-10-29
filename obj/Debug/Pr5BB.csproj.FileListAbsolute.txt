@@ -1,0 +1,15 @@
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\Pr5BB.exe.config
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\Pr5BB.exe
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\Pr5BB.pdb
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\EntityFramework.dll
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\HashPasswords.dll
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\HashPasswords.pdb
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\EntityFramework.xml
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\obj\Debug\Pr5BB.csproj.AssemblyReference.cache
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\obj\Debug\Pr5BB.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\obj\Debug\Pr5BB.csproj.CopyComplete
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\obj\Debug\Pr5BB.exe
+C:\Users\Пользователь\OneDrive\Рабочий стол\натк-хуятк\программные модули\Pr5BB\obj\Debug\Pr5BB.pdb
