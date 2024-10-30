@@ -10,12 +10,12 @@ namespace Pr5BB
    
     public class Helper
     {
-        private static databaseEntities _context;
-        public static databaseEntities GetContext()
+        private static databaseEntities1 _context;
+        public static databaseEntities1 GetContext()
         {
             if (_context == null)
             {
-                _context = new databaseEntities();
+                _context = new databaseEntities1();
             }
             return _context;
 

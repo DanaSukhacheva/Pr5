@@ -15,6 +15,8 @@ namespace Pr5BB.Models
     public partial class Geners_Singers
     {
         public long ID_genres_singers { get; set; }
+        public long ID_genre { get; set; }
+        public long ID_singer { get; set; }
     
         public virtual Geners Geners { get; set; }
         public virtual Singers Singers { get; set; }

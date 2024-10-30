@@ -15,6 +15,8 @@ namespace Pr5BB.Models
     public partial class Sales
     {
         public string ID_sale { get; set; }
+        public long ID_store { get; set; }
+        public long ID_album { get; set; }
         public System.DateTime sale_date { get; set; }
         public int quantity_sold { get; set; }
         public decimal price_per_unit { get; set; }

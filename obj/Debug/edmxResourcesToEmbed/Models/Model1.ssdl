@@ -15,7 +15,7 @@
     </Key>
     <Property Name="ID authorization" Type="bigint" Nullable="false" />
     <Property Name="login" Type="varchar" MaxLength="50" />
-    <Property Name="password" Type="varchar" MaxLength="8" />
+    <Property Name="password" Type="varchar" MaxLength="260" />
   </EntityType>
   <EntityType Name="Circulations">
     <Key>

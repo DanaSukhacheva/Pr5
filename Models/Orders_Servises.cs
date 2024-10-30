@@ -15,6 +15,9 @@ namespace Pr5BB.Models
     public partial class Orders_Servises
     {
         public long ID_orders_Services { get; set; }
+        public long ID_order { get; set; }
+        public long ID_servise { get; set; }
+        public long ID_employee { get; set; }
     
         public virtual Employees Employees { get; set; }
         public virtual Orders Orders { get; set; }

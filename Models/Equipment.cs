@@ -16,8 +16,10 @@ namespace Pr5BB.Models
     {
         public long ID_equipment { get; set; }
         public string Name { get; set; }
+        public long ID_type { get; set; }
         public decimal price { get; set; }
         public int equipment_code { get; set; }
+        public long ID_room { get; set; }
     
         public virtual Equipment_type Equipment_type { get; set; }
         public virtual Rooms Rooms { get; set; }

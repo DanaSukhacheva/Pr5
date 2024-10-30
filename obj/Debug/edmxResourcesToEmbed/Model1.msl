@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="databaseEntities">
+    <EntitySetMapping Name="Albums">
+      <EntityTypeMapping TypeName="Model.Albums">
+        <MappingFragment StoreEntitySet="Albums">
+          <ScalarProperty Name="ID_album" ColumnName="ID album" />
+          <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="release_date" ColumnName="release_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authorization">
+      <EntityTypeMapping TypeName="Model.Authorization">
+        <MappingFragment StoreEntitySet="Authorization">
+          <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Circulations">
+      <EntityTypeMapping TypeName="Model.Circulations">
+        <MappingFragment StoreEntitySet="Circulations">
+          <ScalarProperty Name="ID_circulation" ColumnName="ID circulation" />
+          <ScalarProperty Name="ID_album" ColumnName="ID album" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="print_data" ColumnName="print_data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="Model.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
+          <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
+          <ScalarProperty Name="ID_jobtitle" ColumnName="ID jobtitle" />
+          <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipment">
+      <EntityTypeMapping TypeName="Model.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="ID_equipment" ColumnName="ID equipment" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_type" ColumnName="ID type" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="equipment_code" ColumnName="equipment_code" />
+          <ScalarProperty Name="ID_room" ColumnName="ID room" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipment_type">
+      <EntityTypeMapping TypeName="Model.Equipment_type">
+        <MappingFragment StoreEntitySet="Equipment type">
+          <ScalarProperty Name="ID_type" ColumnName="ID type" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Geners">
+      <EntityTypeMapping TypeName="Model.Geners">
+        <MappingFragment StoreEntitySet="Geners">
+          <ScalarProperty Name="ID_genre" ColumnName="ID genre" />
+          <ScalarProperty Name="genre" ColumnName="genre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Geners_Singers">
+      <EntityTypeMapping TypeName="Model.Geners_Singers">
+        <MappingFragment StoreEntitySet="Geners&amp;Singers">
+          <ScalarProperty Name="ID_genres_singers" ColumnName="ID genres&amp;singers" />
+          <ScalarProperty Name="ID_genre" ColumnName="ID genre" />
+          <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobtitles">
+      <EntityTypeMapping TypeName="Model.Jobtitles">
+        <MappingFragment StoreEntitySet="Jobtitles">
+          <ScalarProperty Name="ID_jobtitle" ColumnName="ID jobtitle" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="Model.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="ID_order" ColumnName="ID order" />
+          <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="ID_status" ColumnName="ID status" />
+          <ScalarProperty Name="ID_room" ColumnName="ID room" />
+          <ScalarProperty Name="rent_date" ColumnName="rent_date" />
+          <ScalarProperty Name="rent_time_hours" ColumnName="rent_time_hours" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders_Servises">
+      <EntityTypeMapping TypeName="Model.Orders_Servises">
+        <MappingFragment StoreEntitySet="Orders&amp;Servises">
+          <ScalarProperty Name="ID_orders_Services" ColumnName="ID orders&amp;Services" />
+          <ScalarProperty Name="ID_order" ColumnName="ID order" />
+          <ScalarProperty Name="ID_servise" ColumnName="ID servise" />
+          <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personal_data">
+      <EntityTypeMapping TypeName="Model.Personal_data">
+        <MappingFragment StoreEntitySet="Personal data">
+          <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="gmail" ColumnName="gmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producers">
+      <EntityTypeMapping TypeName="Model.Producers">
+        <MappingFragment StoreEntitySet="Producers">
+          <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="experience_year" ColumnName="experience_year" />
+          <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
+          <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recordings">
+      <EntityTypeMapping TypeName="Model.Recordings">
+        <MappingFragment StoreEntitySet="Recordings">
+          <ScalarProperty Name="ID_recording" ColumnName="ID recording" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="ID_album" ColumnName="ID album" />
+          <ScalarProperty Name="ID_produser" ColumnName="ID produser" />
+          <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
+          <ScalarProperty Name="recording_date" ColumnName="recording_date" />
+          <ScalarProperty Name="recording_link" ColumnName="recording_link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="Model.Rooms">
+        <MappingFragment StoreEntitySet="Rooms">
+          <ScalarProperty Name="ID_room" ColumnName="ID room" />
+          <ScalarProperty Name="room_number" ColumnName="room_number" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="prise_per_hour" ColumnName="prise_per_hour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="Model.Sales">
+        <MappingFragment StoreEntitySet="Sales">
+          <ScalarProperty Name="ID_sale" ColumnName="ID sale" />
+          <ScalarProperty Name="ID_store" ColumnName="ID store" />
+          <ScalarProperty Name="ID_album" ColumnName="ID album" />
+          <ScalarProperty Name="sale_date" ColumnName="sale_date" />
+          <ScalarProperty Name="quantity_sold" ColumnName="quantity_sold" />
+          <ScalarProperty Name="price_per_unit" ColumnName="price_per_unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="Model.Services">
+        <MappingFragment StoreEntitySet="Services">
+          <ScalarProperty Name="ID_service" ColumnName="ID service" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Singers">
+      <EntityTypeMapping TypeName="Model.Singers">
+        <MappingFragment StoreEntitySet="Singers">
+          <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
+          <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
+          <ScalarProperty Name="pseudonym" ColumnName="pseudonym" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="Model.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="ID_status" ColumnName="ID status" />
+          <ScalarProperty Name="status1" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stories">
+      <EntityTypeMapping TypeName="Model.Stories">
+        <MappingFragment StoreEntitySet="Stories">
+          <ScalarProperty Name="ID_stores" ColumnName="ID stores" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="location" ColumnName="location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -15,6 +15,7 @@ namespace Pr5BB.Models
     public partial class Circulations
     {
         public long ID_circulation { get; set; }
+        public long ID_album { get; set; }
         public int quantity { get; set; }
         public System.DateTime print_data { get; set; }
     

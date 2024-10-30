@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Студия_звукозаписиEntities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="databaseEntities1">
     <EntitySetMapping Name="Albums">
       <EntityTypeMapping TypeName="Model.Albums">
         <MappingFragment StoreEntitySet="Albums">
           <ScalarProperty Name="ID_album" ColumnName="ID album" />
+          <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="release_date" ColumnName="release_date" />
         </MappingFragment>
@@ -23,6 +24,7 @@
       <EntityTypeMapping TypeName="Model.Circulations">
         <MappingFragment StoreEntitySet="Circulations">
           <ScalarProperty Name="ID_circulation" ColumnName="ID circulation" />
+          <ScalarProperty Name="ID_album" ColumnName="ID album" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="print_data" ColumnName="print_data" />
         </MappingFragment>
@@ -32,6 +34,9 @@
       <EntityTypeMapping TypeName="Model.Employees">
         <MappingFragment StoreEntitySet="Employees">
           <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
+          <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
+          <ScalarProperty Name="ID_jobtitle" ColumnName="ID jobtitle" />
+          <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -40,8 +45,10 @@
         <MappingFragment StoreEntitySet="Equipment">
           <ScalarProperty Name="ID_equipment" ColumnName="ID equipment" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_type" ColumnName="ID type" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="equipment_code" ColumnName="equipment_code" />
+          <ScalarProperty Name="ID_room" ColumnName="ID room" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -65,6 +72,8 @@
       <EntityTypeMapping TypeName="Model.Geners_Singers">
         <MappingFragment StoreEntitySet="Geners&amp;Singers">
           <ScalarProperty Name="ID_genres_singers" ColumnName="ID genres&amp;singers" />
+          <ScalarProperty Name="ID_genre" ColumnName="ID genre" />
+          <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -80,7 +89,10 @@
       <EntityTypeMapping TypeName="Model.Orders">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="ID_order" ColumnName="ID order" />
+          <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
           <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="ID_status" ColumnName="ID status" />
+          <ScalarProperty Name="ID_room" ColumnName="ID room" />
           <ScalarProperty Name="rent_date" ColumnName="rent_date" />
           <ScalarProperty Name="rent_time_hours" ColumnName="rent_time_hours" />
         </MappingFragment>
@@ -90,6 +102,9 @@
       <EntityTypeMapping TypeName="Model.Orders_Servises">
         <MappingFragment StoreEntitySet="Orders&amp;Servises">
           <ScalarProperty Name="ID_orders_Services" ColumnName="ID orders&amp;Services" />
+          <ScalarProperty Name="ID_order" ColumnName="ID order" />
+          <ScalarProperty Name="ID_servise" ColumnName="ID servise" />
+          <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -111,6 +126,8 @@
           <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="experience_year" ColumnName="experience_year" />
+          <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
+          <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -119,6 +136,9 @@
         <MappingFragment StoreEntitySet="Recordings">
           <ScalarProperty Name="ID_recording" ColumnName="ID recording" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="ID_album" ColumnName="ID album" />
+          <ScalarProperty Name="ID_produser" ColumnName="ID produser" />
+          <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
           <ScalarProperty Name="recording_date" ColumnName="recording_date" />
           <ScalarProperty Name="recording_link" ColumnName="recording_link" />
         </MappingFragment>
@@ -138,6 +158,8 @@
       <EntityTypeMapping TypeName="Model.Sales">
         <MappingFragment StoreEntitySet="Sales">
           <ScalarProperty Name="ID_sale" ColumnName="ID sale" />
+          <ScalarProperty Name="ID_store" ColumnName="ID store" />
+          <ScalarProperty Name="ID_album" ColumnName="ID album" />
           <ScalarProperty Name="sale_date" ColumnName="sale_date" />
           <ScalarProperty Name="quantity_sold" ColumnName="quantity_sold" />
           <ScalarProperty Name="price_per_unit" ColumnName="price_per_unit" />
@@ -157,8 +179,10 @@
       <EntityTypeMapping TypeName="Model.Singers">
         <MappingFragment StoreEntitySet="Singers">
           <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
+          <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
           <ScalarProperty Name="pseudonym" ColumnName="pseudonym" />
           <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -190,198 +214,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_Albums_Singers" TypeName="Model.FK_Albums_Singers" StoreEntitySet="Albums">
-      <EndProperty Name="Singers">
-        <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-      </EndProperty>
-      <EndProperty Name="Albums">
-        <ScalarProperty Name="ID_album" ColumnName="ID album" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Circulations_Albums" TypeName="Model.FK_Circulations_Albums" StoreEntitySet="Circulations">
-      <EndProperty Name="Albums">
-        <ScalarProperty Name="ID_album" ColumnName="ID album" />
-      </EndProperty>
-      <EndProperty Name="Circulations">
-        <ScalarProperty Name="ID_circulation" ColumnName="ID circulation" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Recordings_Albums" TypeName="Model.FK_Recordings_Albums" StoreEntitySet="Recordings">
-      <EndProperty Name="Albums">
-        <ScalarProperty Name="ID_album" ColumnName="ID album" />
-      </EndProperty>
-      <EndProperty Name="Recordings">
-        <ScalarProperty Name="ID_recording" ColumnName="ID recording" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Sales_Albums" TypeName="Model.FK_Sales_Albums" StoreEntitySet="Sales">
-      <EndProperty Name="Albums">
-        <ScalarProperty Name="ID_album" ColumnName="ID album" />
-      </EndProperty>
-      <EndProperty Name="Sales">
-        <ScalarProperty Name="ID_sale" ColumnName="ID sale" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Employees_Authorization" TypeName="Model.FK_Employees_Authorization" StoreEntitySet="Employees">
-      <EndProperty Name="Authorization">
-        <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
-      </EndProperty>
-      <Condition IsNull="false" ColumnName="ID authorization" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Producers_Authorization" TypeName="Model.FK_Producers_Authorization" StoreEntitySet="Producers">
-      <EndProperty Name="Authorization">
-        <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
-      </EndProperty>
-      <EndProperty Name="Producers">
-        <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Employees_Jobtitles" TypeName="Model.FK_Employees_Jobtitles" StoreEntitySet="Employees">
-      <EndProperty Name="Jobtitles">
-        <ScalarProperty Name="ID_jobtitle" ColumnName="ID jobtitle" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Employees_Personal_data" TypeName="Model.FK_Employees_Personal_data" StoreEntitySet="Employees">
-      <EndProperty Name="Personal_data">
-        <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Orders_Servises_Employees" TypeName="Model.FK_Orders_Servises_Employees" StoreEntitySet="Orders&amp;Servises">
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
-      </EndProperty>
-      <EndProperty Name="Orders_Servises">
-        <ScalarProperty Name="ID_orders_Services" ColumnName="ID orders&amp;Services" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Equipment_Equipment_type" TypeName="Model.FK_Equipment_Equipment_type" StoreEntitySet="Equipment">
-      <EndProperty Name="Equipment_type">
-        <ScalarProperty Name="ID_type" ColumnName="ID type" />
-      </EndProperty>
-      <EndProperty Name="Equipment">
-        <ScalarProperty Name="ID_equipment" ColumnName="ID equipment" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Equipment_Rooms" TypeName="Model.FK_Equipment_Rooms" StoreEntitySet="Equipment">
-      <EndProperty Name="Rooms">
-        <ScalarProperty Name="ID_room" ColumnName="ID room" />
-      </EndProperty>
-      <EndProperty Name="Equipment">
-        <ScalarProperty Name="ID_equipment" ColumnName="ID equipment" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Geners_Singers_Geners" TypeName="Model.FK_Geners_Singers_Geners" StoreEntitySet="Geners&amp;Singers">
-      <EndProperty Name="Geners">
-        <ScalarProperty Name="ID_genre" ColumnName="ID genre" />
-      </EndProperty>
-      <EndProperty Name="Geners_Singers">
-        <ScalarProperty Name="ID_genres_singers" ColumnName="ID genres&amp;singers" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Geners_Singers_Singers" TypeName="Model.FK_Geners_Singers_Singers" StoreEntitySet="Geners&amp;Singers">
-      <EndProperty Name="Singers">
-        <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-      </EndProperty>
-      <EndProperty Name="Geners_Singers">
-        <ScalarProperty Name="ID_genres_singers" ColumnName="ID genres&amp;singers" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Orders_Servises_Orders" TypeName="Model.FK_Orders_Servises_Orders" StoreEntitySet="Orders&amp;Servises">
-      <EndProperty Name="Orders">
-        <ScalarProperty Name="ID_order" ColumnName="ID order" />
-      </EndProperty>
-      <EndProperty Name="Orders_Servises">
-        <ScalarProperty Name="ID_orders_Services" ColumnName="ID orders&amp;Services" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Orders_Rooms" TypeName="Model.FK_Orders_Rooms" StoreEntitySet="Orders">
-      <EndProperty Name="Rooms">
-        <ScalarProperty Name="ID_room" ColumnName="ID room" />
-      </EndProperty>
-      <EndProperty Name="Orders">
-        <ScalarProperty Name="ID_order" ColumnName="ID order" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Orders_Singers" TypeName="Model.FK_Orders_Singers" StoreEntitySet="Orders">
-      <EndProperty Name="Singers">
-        <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-      </EndProperty>
-      <EndProperty Name="Orders">
-        <ScalarProperty Name="ID_order" ColumnName="ID order" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Orders_Status" TypeName="Model.FK_Orders_Status" StoreEntitySet="Orders">
-      <EndProperty Name="Status">
-        <ScalarProperty Name="ID_status" ColumnName="ID status" />
-      </EndProperty>
-      <EndProperty Name="Orders">
-        <ScalarProperty Name="ID_order" ColumnName="ID order" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Orders_Servises_Services" TypeName="Model.FK_Orders_Servises_Services" StoreEntitySet="Orders&amp;Servises">
-      <EndProperty Name="Services">
-        <ScalarProperty Name="ID_service" ColumnName="ID servise" />
-      </EndProperty>
-      <EndProperty Name="Orders_Servises">
-        <ScalarProperty Name="ID_orders_Services" ColumnName="ID orders&amp;Services" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Producers_Personal_data" TypeName="Model.FK_Producers_Personal_data" StoreEntitySet="Producers">
-      <EndProperty Name="Personal_data">
-        <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
-      </EndProperty>
-      <EndProperty Name="Producers">
-        <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Singers_Personal_data" TypeName="Model.FK_Singers_Personal_data" StoreEntitySet="Singers">
-      <EndProperty Name="Personal_data">
-        <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
-      </EndProperty>
-      <EndProperty Name="Singers">
-        <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Recordings_Producers" TypeName="Model.FK_Recordings_Producers" StoreEntitySet="Recordings">
-      <EndProperty Name="Producers">
-        <ScalarProperty Name="ID_producer" ColumnName="ID produser" />
-      </EndProperty>
-      <EndProperty Name="Recordings">
-        <ScalarProperty Name="ID_recording" ColumnName="ID recording" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Singers_Producers" TypeName="Model.FK_Singers_Producers" StoreEntitySet="Singers">
-      <EndProperty Name="Producers">
-        <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
-      </EndProperty>
-      <EndProperty Name="Singers">
-        <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Recordings_Singers" TypeName="Model.FK_Recordings_Singers" StoreEntitySet="Recordings">
-      <EndProperty Name="Singers">
-        <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-      </EndProperty>
-      <EndProperty Name="Recordings">
-        <ScalarProperty Name="ID_recording" ColumnName="ID recording" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK_Sales_Stories" TypeName="Model.FK_Sales_Stories" StoreEntitySet="Sales">
-      <EndProperty Name="Stories">
-        <ScalarProperty Name="ID_stores" ColumnName="ID store" />
-      </EndProperty>
-      <EndProperty Name="Sales">
-        <ScalarProperty Name="ID_sale" ColumnName="ID sale" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

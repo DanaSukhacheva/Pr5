@@ -23,6 +23,7 @@ namespace Pr5BB.Models
         }
     
         public long ID_album { get; set; }
+        public long ID_singer { get; set; }
         public string title { get; set; }
         public System.DateTime release_date { get; set; }
     

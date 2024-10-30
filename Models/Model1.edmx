@@ -20,7 +20,7 @@
           </Key>
           <Property Name="ID authorization" Type="bigint" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="50" />
-          <Property Name="password" Type="varchar" MaxLength="8" />
+          <Property Name="password" Type="varchar" MaxLength="260" />
         </EntityType>
         <EntityType Name="Circulations">
           <Key>
@@ -614,6 +614,7 @@
             <PropertyRef Name="ID_album" />
           </Key>
           <Property Name="ID_album" Type="Int64" Nullable="false" />
+          <Property Name="ID_singer" Type="Int64" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="release_date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Singers" Relationship="Self.FK_Albums_Singers" FromRole="Albums" ToRole="Singers" />
@@ -627,7 +628,7 @@
           </Key>
           <Property Name="ID_authorization" Type="Int64" Nullable="false" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="260" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Authorization" FromRole="Authorization" ToRole="Employees" />
           <NavigationProperty Name="Producers" Relationship="Self.FK_Producers_Authorization" FromRole="Authorization" ToRole="Producers" />
         </EntityType>
@@ -636,6 +637,7 @@
             <PropertyRef Name="ID_circulation" />
           </Key>
           <Property Name="ID_circulation" Type="Int64" Nullable="false" />
+          <Property Name="ID_album" Type="Int64" Nullable="false" />
           <Property Name="quantity" Type="Int32" Nullable="false" />
           <Property Name="print_data" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Albums" Relationship="Self.FK_Circulations_Albums" FromRole="Circulations" ToRole="Albums" />
@@ -645,6 +647,9 @@
             <PropertyRef Name="ID_employee" />
           </Key>
           <Property Name="ID_employee" Type="Int64" Nullable="false" />
+          <Property Name="ID_personal_data" Type="Int64" Nullable="false" />
+          <Property Name="ID_jobtitle" Type="Int64" Nullable="false" />
+          <Property Name="ID_authorization" Type="Int64" />
           <NavigationProperty Name="Authorization" Relationship="Self.FK_Employees_Authorization" FromRole="Employees" ToRole="Authorization" />
           <NavigationProperty Name="Jobtitles" Relationship="Self.FK_Employees_Jobtitles" FromRole="Employees" ToRole="Jobtitles" />
           <NavigationProperty Name="Personal_data" Relationship="Self.FK_Employees_Personal_data" FromRole="Employees" ToRole="Personal_data" />
@@ -656,8 +661,10 @@
           </Key>
           <Property Name="ID_equipment" Type="Int64" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_type" Type="Int64" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="equipment_code" Type="Int32" Nullable="false" />
+          <Property Name="ID_room" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Equipment_type" Relationship="Self.FK_Equipment_Equipment_type" FromRole="Equipment" ToRole="Equipment_type" />
           <NavigationProperty Name="Rooms" Relationship="Self.FK_Equipment_Rooms" FromRole="Equipment" ToRole="Rooms" />
         </EntityType>
@@ -682,6 +689,8 @@
             <PropertyRef Name="ID_genres_singers" />
           </Key>
           <Property Name="ID_genres_singers" Type="Int64" Nullable="false" />
+          <Property Name="ID_genre" Type="Int64" Nullable="false" />
+          <Property Name="ID_singer" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Geners" Relationship="Self.FK_Geners_Singers_Geners" FromRole="Geners_Singers" ToRole="Geners" />
           <NavigationProperty Name="Singers" Relationship="Self.FK_Geners_Singers_Singers" FromRole="Geners_Singers" ToRole="Singers" />
         </EntityType>
@@ -698,7 +707,10 @@
             <PropertyRef Name="ID_order" />
           </Key>
           <Property Name="ID_order" Type="Int64" Nullable="false" />
+          <Property Name="ID_singer" Type="Int64" Nullable="false" />
           <Property Name="order_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_status" Type="Int64" Nullable="false" />
+          <Property Name="ID_room" Type="Int64" Nullable="false" />
           <Property Name="rent_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="rent_time_hours" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Orders_Servises" Relationship="Self.FK_Orders_Servises_Orders" FromRole="Orders" ToRole="Orders_Servises" />
@@ -711,6 +723,9 @@
             <PropertyRef Name="ID_orders_Services" />
           </Key>
           <Property Name="ID_orders_Services" Type="Int64" Nullable="false" />
+          <Property Name="ID_order" Type="Int64" Nullable="false" />
+          <Property Name="ID_servise" Type="Int64" Nullable="false" />
+          <Property Name="ID_employee" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Orders_Servises_Employees" FromRole="Orders_Servises" ToRole="Employees" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Servises_Orders" FromRole="Orders_Servises" ToRole="Orders" />
           <NavigationProperty Name="Services" Relationship="Self.FK_Orders_Servises_Services" FromRole="Orders_Servises" ToRole="Services" />
@@ -736,6 +751,8 @@
           <Property Name="ID_producer" Type="Int64" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="experience_year" Type="Int32" Nullable="false" />
+          <Property Name="ID_personal_data" Type="Int64" Nullable="false" />
+          <Property Name="ID_authorization" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Authorization" Relationship="Self.FK_Producers_Authorization" FromRole="Producers" ToRole="Authorization" />
           <NavigationProperty Name="Personal_data" Relationship="Self.FK_Producers_Personal_data" FromRole="Producers" ToRole="Personal_data" />
           <NavigationProperty Name="Recordings" Relationship="Self.FK_Recordings_Producers" FromRole="Producers" ToRole="Recordings" />
@@ -747,6 +764,9 @@
           </Key>
           <Property Name="ID_recording" Type="Int64" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_album" Type="Int64" Nullable="false" />
+          <Property Name="ID_produser" Type="Int64" Nullable="false" />
+          <Property Name="ID_singer" Type="Int64" Nullable="false" />
           <Property Name="recording_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="recording_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Albums" Relationship="Self.FK_Recordings_Albums" FromRole="Recordings" ToRole="Albums" />
@@ -769,6 +789,8 @@
             <PropertyRef Name="ID_sale" />
           </Key>
           <Property Name="ID_sale" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ID_store" Type="Int64" Nullable="false" />
+          <Property Name="ID_album" Type="Int64" Nullable="false" />
           <Property Name="sale_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="quantity_sold" Type="Int32" Nullable="false" />
           <Property Name="price_per_unit" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
@@ -789,8 +811,10 @@
             <PropertyRef Name="ID_singer" />
           </Key>
           <Property Name="ID_singer" Type="Int64" Nullable="false" />
+          <Property Name="ID_producer" Type="Int64" Nullable="false" />
           <Property Name="pseudonym" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_personal_data" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Albums" Relationship="Self.FK_Albums_Singers" FromRole="Singers" ToRole="Albums" />
           <NavigationProperty Name="Geners_Singers" Relationship="Self.FK_Geners_Singers_Singers" FromRole="Singers" ToRole="Geners_Singers" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Singers" FromRole="Singers" ToRole="Orders" />
@@ -828,100 +852,292 @@
         <Association Name="FK_Albums_Singers">
           <End Role="Singers" Type="Self.Singers" Multiplicity="1" />
           <End Role="Albums" Type="Self.Albums" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Singers">
+              <PropertyRef Name="ID_singer" />
+            </Principal>
+            <Dependent Role="Albums">
+              <PropertyRef Name="ID_singer" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Circulations_Albums">
           <End Role="Albums" Type="Self.Albums" Multiplicity="1" />
           <End Role="Circulations" Type="Self.Circulations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Albums">
+              <PropertyRef Name="ID_album" />
+            </Principal>
+            <Dependent Role="Circulations">
+              <PropertyRef Name="ID_album" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Recordings_Albums">
           <End Role="Albums" Type="Self.Albums" Multiplicity="1" />
           <End Role="Recordings" Type="Self.Recordings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Albums">
+              <PropertyRef Name="ID_album" />
+            </Principal>
+            <Dependent Role="Recordings">
+              <PropertyRef Name="ID_album" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sales_Albums">
           <End Role="Albums" Type="Self.Albums" Multiplicity="1" />
           <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Albums">
+              <PropertyRef Name="ID_album" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="ID_album" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employees_Authorization">
           <End Role="Authorization" Type="Self.Authorization" Multiplicity="0..1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="ID_authorization" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_authorization" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Producers_Authorization">
           <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
           <End Role="Producers" Type="Self.Producers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="ID_authorization" />
+            </Principal>
+            <Dependent Role="Producers">
+              <PropertyRef Name="ID_authorization" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employees_Jobtitles">
           <End Role="Jobtitles" Type="Self.Jobtitles" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jobtitles">
+              <PropertyRef Name="ID_jobtitle" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_jobtitle" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employees_Personal_data">
           <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_data">
+              <PropertyRef Name="ID_personal_data" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_personal_data" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Servises_Employees">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
           <End Role="Orders_Servises" Type="Self.Orders_Servises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID_employee" />
+            </Principal>
+            <Dependent Role="Orders_Servises">
+              <PropertyRef Name="ID_employee" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Equipment_Equipment_type">
           <End Role="Equipment_type" Type="Self.Equipment_type" Multiplicity="1" />
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment_type">
+              <PropertyRef Name="ID_type" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="ID_type" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Equipment_Rooms">
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="ID_room" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="ID_room" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Geners_Singers_Geners">
           <End Role="Geners" Type="Self.Geners" Multiplicity="1" />
           <End Role="Geners_Singers" Type="Self.Geners_Singers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geners">
+              <PropertyRef Name="ID_genre" />
+            </Principal>
+            <Dependent Role="Geners_Singers">
+              <PropertyRef Name="ID_genre" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Geners_Singers_Singers">
           <End Role="Singers" Type="Self.Singers" Multiplicity="1" />
           <End Role="Geners_Singers" Type="Self.Geners_Singers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Singers">
+              <PropertyRef Name="ID_singer" />
+            </Principal>
+            <Dependent Role="Geners_Singers">
+              <PropertyRef Name="ID_singer" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Servises_Orders">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
           <End Role="Orders_Servises" Type="Self.Orders_Servises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID_order" />
+            </Principal>
+            <Dependent Role="Orders_Servises">
+              <PropertyRef Name="ID_order" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Rooms">
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="ID_room" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_room" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Singers">
           <End Role="Singers" Type="Self.Singers" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Singers">
+              <PropertyRef Name="ID_singer" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_singer" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Status">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID_status" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_status" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Servises_Services">
           <End Role="Services" Type="Self.Services" Multiplicity="1" />
           <End Role="Orders_Servises" Type="Self.Orders_Servises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ID_service" />
+            </Principal>
+            <Dependent Role="Orders_Servises">
+              <PropertyRef Name="ID_servise" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Producers_Personal_data">
           <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="1" />
           <End Role="Producers" Type="Self.Producers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_data">
+              <PropertyRef Name="ID_personal_data" />
+            </Principal>
+            <Dependent Role="Producers">
+              <PropertyRef Name="ID_personal_data" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Singers_Personal_data">
           <End Role="Personal_data" Type="Self.Personal_data" Multiplicity="1" />
           <End Role="Singers" Type="Self.Singers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal_data">
+              <PropertyRef Name="ID_personal_data" />
+            </Principal>
+            <Dependent Role="Singers">
+              <PropertyRef Name="ID_personal_data" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Recordings_Producers">
           <End Role="Producers" Type="Self.Producers" Multiplicity="1" />
           <End Role="Recordings" Type="Self.Recordings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producers">
+              <PropertyRef Name="ID_producer" />
+            </Principal>
+            <Dependent Role="Recordings">
+              <PropertyRef Name="ID_produser" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Singers_Producers">
           <End Role="Producers" Type="Self.Producers" Multiplicity="1" />
           <End Role="Singers" Type="Self.Singers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producers">
+              <PropertyRef Name="ID_producer" />
+            </Principal>
+            <Dependent Role="Singers">
+              <PropertyRef Name="ID_producer" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Recordings_Singers">
           <End Role="Singers" Type="Self.Singers" Multiplicity="1" />
           <End Role="Recordings" Type="Self.Recordings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Singers">
+              <PropertyRef Name="ID_singer" />
+            </Principal>
+            <Dependent Role="Recordings">
+              <PropertyRef Name="ID_singer" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sales_Stories">
           <End Role="Stories" Type="Self.Stories" Multiplicity="1" />
           <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stories">
+              <PropertyRef Name="ID_stores" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="ID_store" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Студия_звукозаписиEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="databaseEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Albums" EntityType="Self.Albums" />
           <EntitySet Name="Authorization" EntityType="Self.Authorization" />
           <EntitySet Name="Circulations" EntityType="Self.Circulations" />
@@ -1045,11 +1261,12 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Студия_звукозаписиEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="databaseEntities1">
           <EntitySetMapping Name="Albums">
             <EntityTypeMapping TypeName="Model.Albums">
               <MappingFragment StoreEntitySet="Albums">
                 <ScalarProperty Name="ID_album" ColumnName="ID album" />
+                <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="release_date" ColumnName="release_date" />
               </MappingFragment>
@@ -1068,6 +1285,7 @@
             <EntityTypeMapping TypeName="Model.Circulations">
               <MappingFragment StoreEntitySet="Circulations">
                 <ScalarProperty Name="ID_circulation" ColumnName="ID circulation" />
+                <ScalarProperty Name="ID_album" ColumnName="ID album" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="print_data" ColumnName="print_data" />
               </MappingFragment>
@@ -1077,6 +1295,9 @@
             <EntityTypeMapping TypeName="Model.Employees">
               <MappingFragment StoreEntitySet="Employees">
                 <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
+                <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
+                <ScalarProperty Name="ID_jobtitle" ColumnName="ID jobtitle" />
+                <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1085,8 +1306,10 @@
               <MappingFragment StoreEntitySet="Equipment">
                 <ScalarProperty Name="ID_equipment" ColumnName="ID equipment" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_type" ColumnName="ID type" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="equipment_code" ColumnName="equipment_code" />
+                <ScalarProperty Name="ID_room" ColumnName="ID room" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1110,6 +1333,8 @@
             <EntityTypeMapping TypeName="Model.Geners_Singers">
               <MappingFragment StoreEntitySet="Geners&amp;Singers">
                 <ScalarProperty Name="ID_genres_singers" ColumnName="ID genres&amp;singers" />
+                <ScalarProperty Name="ID_genre" ColumnName="ID genre" />
+                <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1125,7 +1350,10 @@
             <EntityTypeMapping TypeName="Model.Orders">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="ID_order" ColumnName="ID order" />
+                <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
                 <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="ID_status" ColumnName="ID status" />
+                <ScalarProperty Name="ID_room" ColumnName="ID room" />
                 <ScalarProperty Name="rent_date" ColumnName="rent_date" />
                 <ScalarProperty Name="rent_time_hours" ColumnName="rent_time_hours" />
               </MappingFragment>
@@ -1135,6 +1363,9 @@
             <EntityTypeMapping TypeName="Model.Orders_Servises">
               <MappingFragment StoreEntitySet="Orders&amp;Servises">
                 <ScalarProperty Name="ID_orders_Services" ColumnName="ID orders&amp;Services" />
+                <ScalarProperty Name="ID_order" ColumnName="ID order" />
+                <ScalarProperty Name="ID_servise" ColumnName="ID servise" />
+                <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1156,6 +1387,8 @@
                 <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="experience_year" ColumnName="experience_year" />
+                <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
+                <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1164,6 +1397,9 @@
               <MappingFragment StoreEntitySet="Recordings">
                 <ScalarProperty Name="ID_recording" ColumnName="ID recording" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="ID_album" ColumnName="ID album" />
+                <ScalarProperty Name="ID_produser" ColumnName="ID produser" />
+                <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
                 <ScalarProperty Name="recording_date" ColumnName="recording_date" />
                 <ScalarProperty Name="recording_link" ColumnName="recording_link" />
               </MappingFragment>
@@ -1183,6 +1419,8 @@
             <EntityTypeMapping TypeName="Model.Sales">
               <MappingFragment StoreEntitySet="Sales">
                 <ScalarProperty Name="ID_sale" ColumnName="ID sale" />
+                <ScalarProperty Name="ID_store" ColumnName="ID store" />
+                <ScalarProperty Name="ID_album" ColumnName="ID album" />
                 <ScalarProperty Name="sale_date" ColumnName="sale_date" />
                 <ScalarProperty Name="quantity_sold" ColumnName="quantity_sold" />
                 <ScalarProperty Name="price_per_unit" ColumnName="price_per_unit" />
@@ -1202,8 +1440,10 @@
             <EntityTypeMapping TypeName="Model.Singers">
               <MappingFragment StoreEntitySet="Singers">
                 <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
+                <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
                 <ScalarProperty Name="pseudonym" ColumnName="pseudonym" />
                 <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1235,199 +1475,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="FK_Albums_Singers" TypeName="Model.FK_Albums_Singers" StoreEntitySet="Albums">
-            <EndProperty Name="Singers">
-              <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-            </EndProperty>
-            <EndProperty Name="Albums">
-              <ScalarProperty Name="ID_album" ColumnName="ID album" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Circulations_Albums" TypeName="Model.FK_Circulations_Albums" StoreEntitySet="Circulations">
-            <EndProperty Name="Albums">
-              <ScalarProperty Name="ID_album" ColumnName="ID album" />
-            </EndProperty>
-            <EndProperty Name="Circulations">
-              <ScalarProperty Name="ID_circulation" ColumnName="ID circulation" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Recordings_Albums" TypeName="Model.FK_Recordings_Albums" StoreEntitySet="Recordings">
-            <EndProperty Name="Albums">
-              <ScalarProperty Name="ID_album" ColumnName="ID album" />
-            </EndProperty>
-            <EndProperty Name="Recordings">
-              <ScalarProperty Name="ID_recording" ColumnName="ID recording" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Sales_Albums" TypeName="Model.FK_Sales_Albums" StoreEntitySet="Sales">
-            <EndProperty Name="Albums">
-              <ScalarProperty Name="ID_album" ColumnName="ID album" />
-            </EndProperty>
-            <EndProperty Name="Sales">
-              <ScalarProperty Name="ID_sale" ColumnName="ID sale" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Employees_Authorization" TypeName="Model.FK_Employees_Authorization" StoreEntitySet="Employees">
-            <EndProperty Name="Authorization">
-              <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
-            </EndProperty>
-            <EndProperty Name="Employees">
-              <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
-            </EndProperty>
-            <Condition IsNull="false" ColumnName="ID authorization" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Producers_Authorization" TypeName="Model.FK_Producers_Authorization" StoreEntitySet="Producers">
-            <EndProperty Name="Authorization">
-              <ScalarProperty Name="ID_authorization" ColumnName="ID authorization" />
-            </EndProperty>
-            <EndProperty Name="Producers">
-              <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Employees_Jobtitles" TypeName="Model.FK_Employees_Jobtitles" StoreEntitySet="Employees">
-            <EndProperty Name="Jobtitles">
-              <ScalarProperty Name="ID_jobtitle" ColumnName="ID jobtitle" />
-            </EndProperty>
-            <EndProperty Name="Employees">
-              <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Employees_Personal_data" TypeName="Model.FK_Employees_Personal_data" StoreEntitySet="Employees">
-            <EndProperty Name="Personal_data">
-              <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
-            </EndProperty>
-            <EndProperty Name="Employees">
-              <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Orders_Servises_Employees" TypeName="Model.FK_Orders_Servises_Employees" StoreEntitySet="Orders&amp;Servises">
-            <EndProperty Name="Employees">
-              <ScalarProperty Name="ID_employee" ColumnName="ID employee" />
-            </EndProperty>
-            <EndProperty Name="Orders_Servises">
-              <ScalarProperty Name="ID_orders_Services" ColumnName="ID orders&amp;Services" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Equipment_Equipment_type" TypeName="Model.FK_Equipment_Equipment_type" StoreEntitySet="Equipment">
-            <EndProperty Name="Equipment_type">
-              <ScalarProperty Name="ID_type" ColumnName="ID type" />
-            </EndProperty>
-            <EndProperty Name="Equipment">
-              <ScalarProperty Name="ID_equipment" ColumnName="ID equipment" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Equipment_Rooms" TypeName="Model.FK_Equipment_Rooms" StoreEntitySet="Equipment">
-            <EndProperty Name="Rooms">
-              <ScalarProperty Name="ID_room" ColumnName="ID room" />
-            </EndProperty>
-            <EndProperty Name="Equipment">
-              <ScalarProperty Name="ID_equipment" ColumnName="ID equipment" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Geners_Singers_Geners" TypeName="Model.FK_Geners_Singers_Geners" StoreEntitySet="Geners&amp;Singers">
-            <EndProperty Name="Geners">
-              <ScalarProperty Name="ID_genre" ColumnName="ID genre" />
-            </EndProperty>
-            <EndProperty Name="Geners_Singers">
-              <ScalarProperty Name="ID_genres_singers" ColumnName="ID genres&amp;singers" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Geners_Singers_Singers" TypeName="Model.FK_Geners_Singers_Singers" StoreEntitySet="Geners&amp;Singers">
-            <EndProperty Name="Singers">
-              <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-            </EndProperty>
-            <EndProperty Name="Geners_Singers">
-              <ScalarProperty Name="ID_genres_singers" ColumnName="ID genres&amp;singers" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Orders_Servises_Orders" TypeName="Model.FK_Orders_Servises_Orders" StoreEntitySet="Orders&amp;Servises">
-            <EndProperty Name="Orders">
-              <ScalarProperty Name="ID_order" ColumnName="ID order" />
-            </EndProperty>
-            <EndProperty Name="Orders_Servises">
-              <ScalarProperty Name="ID_orders_Services" ColumnName="ID orders&amp;Services" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Orders_Rooms" TypeName="Model.FK_Orders_Rooms" StoreEntitySet="Orders">
-            <EndProperty Name="Rooms">
-              <ScalarProperty Name="ID_room" ColumnName="ID room" />
-            </EndProperty>
-            <EndProperty Name="Orders">
-              <ScalarProperty Name="ID_order" ColumnName="ID order" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Orders_Singers" TypeName="Model.FK_Orders_Singers" StoreEntitySet="Orders">
-            <EndProperty Name="Singers">
-              <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-            </EndProperty>
-            <EndProperty Name="Orders">
-              <ScalarProperty Name="ID_order" ColumnName="ID order" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Orders_Status" TypeName="Model.FK_Orders_Status" StoreEntitySet="Orders">
-            <EndProperty Name="Status">
-              <ScalarProperty Name="ID_status" ColumnName="ID status" />
-            </EndProperty>
-            <EndProperty Name="Orders">
-              <ScalarProperty Name="ID_order" ColumnName="ID order" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Orders_Servises_Services" TypeName="Model.FK_Orders_Servises_Services" StoreEntitySet="Orders&amp;Servises">
-            <EndProperty Name="Services">
-              <ScalarProperty Name="ID_service" ColumnName="ID servise" />
-            </EndProperty>
-            <EndProperty Name="Orders_Servises">
-              <ScalarProperty Name="ID_orders_Services" ColumnName="ID orders&amp;Services" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Producers_Personal_data" TypeName="Model.FK_Producers_Personal_data" StoreEntitySet="Producers">
-            <EndProperty Name="Personal_data">
-              <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
-            </EndProperty>
-            <EndProperty Name="Producers">
-              <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Singers_Personal_data" TypeName="Model.FK_Singers_Personal_data" StoreEntitySet="Singers">
-            <EndProperty Name="Personal_data">
-              <ScalarProperty Name="ID_personal_data" ColumnName="ID personal_data" />
-            </EndProperty>
-            <EndProperty Name="Singers">
-              <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Recordings_Producers" TypeName="Model.FK_Recordings_Producers" StoreEntitySet="Recordings">
-            <EndProperty Name="Producers">
-              <ScalarProperty Name="ID_producer" ColumnName="ID produser" />
-            </EndProperty>
-            <EndProperty Name="Recordings">
-              <ScalarProperty Name="ID_recording" ColumnName="ID recording" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Singers_Producers" TypeName="Model.FK_Singers_Producers" StoreEntitySet="Singers">
-            <EndProperty Name="Producers">
-              <ScalarProperty Name="ID_producer" ColumnName="ID producer" />
-            </EndProperty>
-            <EndProperty Name="Singers">
-              <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Recordings_Singers" TypeName="Model.FK_Recordings_Singers" StoreEntitySet="Recordings">
-            <EndProperty Name="Singers">
-              <ScalarProperty Name="ID_singer" ColumnName="ID singer" />
-            </EndProperty>
-            <EndProperty Name="Recordings">
-              <ScalarProperty Name="ID_recording" ColumnName="ID recording" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Sales_Stories" TypeName="Model.FK_Sales_Stories" StoreEntitySet="Sales">
-            <EndProperty Name="Stories">
-              <ScalarProperty Name="ID_stores" ColumnName="ID store" />
-            </EndProperty>
-            <EndProperty Name="Sales">
-              <ScalarProperty Name="ID_sale" ColumnName="ID sale" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1443,7 +1490,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>

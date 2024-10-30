@@ -16,6 +16,9 @@ namespace Pr5BB.Models
     {
         public long ID_recording { get; set; }
         public string title { get; set; }
+        public long ID_album { get; set; }
+        public long ID_produser { get; set; }
+        public long ID_singer { get; set; }
         public System.DateTime recording_date { get; set; }
         public string recording_link { get; set; }
     

@@ -13,24 +13,23 @@ namespace Pr5BB
         
         static void Main(string[] args)
         {
-            databaseEntities db = Helper.GetContext();
+            databaseEntities1 db = Helper.GetContext();
             Class1 hasher = new Class1();
             /*var jobtitle = db.Jobtitles.FirstOrDefault();
             Console.WriteLine(jobtitle.title + " " + jobtitle.ID_jobtitle.ToString());*/
            
-            string hashpassword = hasher.HashPassword("Hr46hI2m");
             Console.WriteLine("Оригинальный пароль: " + "Hr46hI2m");
             var personalData = db.Personal_data.Where(a => a.gmail == "zellen012@gmail.com").FirstOrDefault();
-            var employee = db.Employees.Where(a => a.Personal_data.ID_personal_data == personalData.ID_personal_data);
+            var employee = db.Employees.Where(a => a.Personal_data.ID_personal_data == personalData.ID_personal_data).FirstOrDefault();
             Authorization authorization = new Authorization {
                 ID_authorization = 6,
                 login = "meneger",
-                password = "Hr46hI2m"
+                password = hasher.HashPassword("Hr46hI2m")
             };
             db.Authorization.Add(authorization);
             db.SaveChanges();
-            
-            
+            employee.Authorization = authorization;
+            db.SaveChanges();
         }
     }
 }

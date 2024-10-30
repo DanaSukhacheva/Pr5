@@ -21,6 +21,9 @@ namespace Pr5BB.Models
         }
     
         public long ID_employee { get; set; }
+        public long ID_personal_data { get; set; }
+        public long ID_jobtitle { get; set; }
+        public Nullable<long> ID_authorization { get; set; }
     
         public virtual Authorization Authorization { get; set; }
         public virtual Jobtitles Jobtitles { get; set; }

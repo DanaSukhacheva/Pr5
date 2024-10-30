@@ -13,10 +13,10 @@ namespace Pr5BB.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Студия_звукозаписиEntities : DbContext
+    public partial class databaseEntities1 : DbContext
     {
-        public Студия_звукозаписиEntities()
-            : base("name=Студия_звукозаписиEntities")
+        public databaseEntities1()
+            : base("name=databaseEntities1")
         {
         }
     

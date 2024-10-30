@@ -24,8 +24,10 @@ namespace Pr5BB.Models
         }
     
         public long ID_singer { get; set; }
+        public long ID_producer { get; set; }
         public string pseudonym { get; set; }
         public string country { get; set; }
+        public long ID_personal_data { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Albums> Albums { get; set; }

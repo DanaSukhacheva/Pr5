@@ -21,7 +21,10 @@ namespace Pr5BB.Models
         }
     
         public long ID_order { get; set; }
+        public long ID_singer { get; set; }
         public System.DateTime order_date { get; set; }
+        public long ID_status { get; set; }
+        public long ID_room { get; set; }
         public System.DateTime rent_date { get; set; }
         public int rent_time_hours { get; set; }
     

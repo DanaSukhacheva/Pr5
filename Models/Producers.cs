@@ -24,6 +24,8 @@ namespace Pr5BB.Models
         public long ID_producer { get; set; }
         public string Name { get; set; }
         public int experience_year { get; set; }
+        public long ID_personal_data { get; set; }
+        public long ID_authorization { get; set; }
     
         public virtual Authorization Authorization { get; set; }
         public virtual Personal_data Personal_data { get; set; }
